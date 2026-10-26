@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CloudPass</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1220;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            box-sizing: border-box;
+            background: #151f30;
+            border-radius: 16px;
+        }
+
+        h1 { color: #42d6c5; }
+
+        p { color: #b8c3d4; }
+
+        label {
+            display: block;
+            margin: 18px 0 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #39465b;
+            border-radius: 8px;
+            background: #0b1220;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 8px;
+            background: #42d6c5;
+            color: #0b1220;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        a {
+            color: #42d6c5;
+            text-decoration: none;
+        }
+
+        .back {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome Back</h1>
+        <p>Log in to manage your CloudPass bus passes.</p>
+
+        <form method="POST" action="/login">
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                maxlength="150"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                required
+            >
+
+            <button type="submit">Log In</button>
+        </form>
+
+        <p class="back">
+            Don't have an account?
+            <a href="/register">Register</a>
+        </p>
+
+        <a class="back" href="/">← Back to Home</a>
+    </div>
+</body>
+</html>

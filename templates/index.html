@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudPass | Bus Pass Booking</title>
+    <style>
+        :root {
+            --navy: #102c4a;
+            --teal: #0d9488;
+            --light: #f4f7fb;
+            --muted: #64748b;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--light);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 750;
+        }
+
+        .brand-icon {
+            background: #2dd4bf;
+            color: var(--navy);
+            border-radius: 12px;
+            padding: 7px 10px;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .hero {
+            background: linear-gradient(130deg, #102c4a, #164e63);
+            color: white;
+            padding: 65px 7% 75px;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .eyebrow {
+            color: #5eead4;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 5vw, 4rem);
+            line-height: 1.12;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #d5e4f2;
+            font-size: 1.08rem;
+            max-width: 590px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-block;
+            border: none;
+            border-radius: 9px;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .button-primary {
+            background: #2dd4bf;
+            color: #102c4a;
+        }
+
+        .button-secondary {
+            border: 1px solid #b9d0e5;
+            color: white;
+            background: transparent;
+        }
+
+        main {
+            max-width: 1180px;
+            margin: auto;
+            padding: 42px 24px 60px;
+        }
+
+        .section-heading {
+            margin-bottom: 24px;
+        }
+
+        .section-heading h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 52px;
+        }
+
+        .feature, .plan {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .feature-icon {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            background: #ccfbf1;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            margin-bottom: 14px;
+        }
+
+        .feature h3 {
+            margin-bottom: 7px;
+        }
+
+        .feature p, .plan p {
+            color: var(--muted);
+            font-size: 0.93rem;
+        }
+
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .plan {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .plan.featured {
+            border: 2px solid var(--teal);
+        }
+
+        .plan-label {
+            color: var(--teal);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .plan .button {
+            text-align: center;
+            margin-top: auto;
+            background: var(--navy);
+            color: white;
+        }
+
+        .featured .button {
+            background: var(--teal);
+        }
+
+        .notice {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        footer {
+            background: var(--navy);
+            color: #d5e4f2;
+            padding: 25px 7%;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 16px 5%;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a:not(.nav-cta):not(.my-passes) {
+                display: none;
+            }
+
+            .hero {
+                padding: 48px 6%;
+            }
+
+            main {
+                padding: 32px 18px 45px;
+            }
+
+            .features, .plans {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="brand" style="color: white; text-decoration: none;">
+            <span class="brand-icon">🚌</span>
+            <span>CloudPass</span>
+        </a>
+        <nav>
+    <a href="#features">Features</a>
+    <a href="#plans">Pass plans</a>
+    <a href="#plans" class="nav-cta">Book a pass ↓</a>
+
+    {% if logged_in %}
+        <a href="/my-passes" class="my-passes">My Passes</a>
+        <a href="/logout">Logout</a>
+    {% else %}
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    {% endif %}
+</nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="eyebrow">SMARTER COMMUTES START HERE</div>
+            <h1>Your journey,<br>simplified.</h1>
+            <p>Book your bus pass online, view your pass details, and plan your daily commute — all in one place.</p>
+            <div class="hero-actions">
+                <a href="#plans" class="button button-primary">Explore pass plans →</a>
+                <a href="#features" class="button button-secondary">Discover CloudPass</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="features">
+            <div class="section-heading">
+                <h2>Travel with confidence</h2>
+                <p>Designed to make bus pass booking simpler and more reliable.</p>
+            </div>
+
+            <div class="features">
+                <article class="feature">
+                    <div class="feature-icon">🎫</div>
+                    <h3>Digital passes</h3>
+                    <p>Access your booking details and unique pass identifier online.</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure booking</h3>
+                    <p>Database-backed records help prevent duplicate pass identifiers and lost bookings.</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon">₹</div>
+                    <h3>Clear pricing</h3>
+                    <p>Pass prices are managed by the system rather than trusted from the browser.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="plans">
+            <div class="section-heading">
+                <h2>Find your pass</h2>
+                <p>Choose a duration that fits your travel routine.</p>
+            </div>
+
+            <div class="plans">
+                {% for plan in plans %}
+                <article class="plan {% if plan.plan_name == 'Monthly Pass' %}featured{% endif %}">
+                    <div class="plan-label">
+                        {{ plan.plan_name.upper() }}
+                    </div>
+
+                    <h3>{{ plan.plan_name }}</h3>
+
+                    <div class="price">
+                        ₹{{ "%.0f"|format(plan.price) }}
+                    </div>
+
+                    <p>Valid for {{ plan.duration_days }}
+                        {% if plan.duration_days == 1 %}day{% else %}days{% endif %}
+                    </p>
+
+                    <a class="button" href="/booking">
+                        Choose {{ plan.plan_name.replace(' Pass', '').lower() }}
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+            <p class="notice">Prototype prices for development only. These are not official transport fares.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 CloudPass · Cloud-based bus pass booking prototype</p>
+    </footer>
+</body>
+</html>
